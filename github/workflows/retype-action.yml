@@ -1,15 +1,13 @@
-name: Publish Retype powered website on a new release
+name: GitHub Action for Retype
 on:
-  release:
-    types: [ published ]
-
+  push:
+    branches:
+      - main
 jobs:
-  publish:
-    name: Assemble and publish docs
+  job1:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v2
 
@@ -17,5 +15,5 @@ jobs:
 
       - uses: retypeapp/action-github-pages@latest
         with:
-          branch: retype
-          update-branch: true
+          branch: main
+          directory: docs
